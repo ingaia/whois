@@ -35,6 +35,12 @@ module Whois
           end
         end
 
+        property_supported :owner do
+          if content_for_scanner =~ /owner:\s+(.+)\n/
+            $1
+          end
+        end
+
         property_supported :available? do
           !!(content_for_scanner =~ /No match for domain/)
         end
